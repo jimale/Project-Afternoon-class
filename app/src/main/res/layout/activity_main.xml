@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,20 +8,32 @@
     android:padding="10dp"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/name"
-        android:textColor="@color/black"
-        android:textStyle="italic|bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello world"
-        android:textSize="25sp" />
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:drawablePadding="50dp"
+        app:drawableEndCompat="@drawable/ic_person_24" />
 
     <EditText
+        android:hint="Enter your username"
+        android:inputType="textMultiLine"
         android:layout_marginTop="10dp"
         android:id="@+id/myEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+
+    <ImageView
+        android:layout_gravity="center"
+        android:src="@drawable/somlogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
 
     <Button
         android:layout_marginTop="10dp"

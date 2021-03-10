@@ -1,5 +1,6 @@
 package com.tiriig.fistappafternoon
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
@@ -23,14 +24,18 @@ class MainActivity : AppCompatActivity() {
         mybutton = findViewById(R.id.myButton)
         myEditText = findViewById(R.id.myEditText)
 
+
         mybutton.setOnClickListener {
 
-            val name = myEditText.text
+//            val name = myEditText.text
+//
+//            val toast = Toast.makeText(this, name, Toast.LENGTH_SHORT)
+//            toast.setGravity(Gravity.TOP or Gravity.CENTER, 0, 0)
+//            toast.show()
 
-            val toast = Toast.makeText(this, name, Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.TOP or Gravity.CENTER, 0, 0)
-            toast.show()
-
+            val ab = Intent(this,DisplayActivity::class.java)
+            ab.putExtra("name",myEditText.text.toString())
+            startActivity(ab)
 
         }
     }
