@@ -1,8 +1,8 @@
 package com.tiriig.fistappafternoon
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class DisplayActivity : AppCompatActivity() {
 
@@ -15,6 +15,8 @@ class DisplayActivity : AppCompatActivity() {
         textView = findViewById(R.id.displayText)
 
         textView.text = intent.getStringExtra("name")
+
+        title = intent.getStringExtra("name")
     }
 
 }
