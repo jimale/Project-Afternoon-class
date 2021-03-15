@@ -1,7 +1,8 @@
 package com.tiriig.fistappafternoon
 
 import android.os.Bundle
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 class DisplayActivity : AppCompatActivity() {
@@ -12,11 +13,19 @@ class DisplayActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display)
 
-        textView = findViewById(R.id.displayText)
+        val spinner = findViewById<Spinner>(R.id.mySpinner)
 
-        textView.text = intent.getStringExtra("name")
+        val languages = arrayOf("Select language","PHP","Java","Kotlin")
+        val adapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,languages)
 
-        title = intent.getStringExtra("name")
+        spinner.adapter = adapter
+
+
+//        textView = findViewById(R.id.displayText)
+//
+//        textView.text = intent.getStringExtra("name")
+//
+//        title = intent.getStringExtra("name")
     }
 
 }
