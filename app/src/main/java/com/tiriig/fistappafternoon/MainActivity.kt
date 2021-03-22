@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,10 +34,19 @@ class MainActivity : AppCompatActivity() {
 //            toast.setGravity(Gravity.TOP or Gravity.CENTER, 0, 0)
 //            toast.show()
 
-            val ab = Intent(this,DisplayActivity::class.java)
-            ab.putExtra("name",myEditText.text.toString())
-            startActivity(ab)
+//            val ab = Intent(this,DisplayActivity::class.java)
+//            ab.putExtra("name",myEditText.text.toString())
+//            startActivity(ab)
 
+            val db = Room.databaseBuilder(applicationContext,
+                    MyDatabase::class.java,
+                    "mydatabase").build()
+
+            val userDao  = db.userDao()
+
+            val user = User(1,"Mohamed",47838392)
+
+            userDao.insertUser(user)
         }
     }
 }
