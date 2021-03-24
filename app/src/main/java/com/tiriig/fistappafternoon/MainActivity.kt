@@ -35,66 +35,33 @@ class MainActivity : AppCompatActivity() {
 
         mybutton.setOnClickListener {
 
-//            val name = myEditText.text
-//
-//            val toast = Toast.makeText(this, name, Toast.LENGTH_SHORT)
-//            toast.setGravity(Gravity.TOP or Gravity.CENTER, 0, 0)
-//            toast.show()
-
-//            val ab = Intent(this,DisplayActivity::class.java)
-//            ab.putExtra("name",myEditText.text.toString())
-//            startActivity(ab)
-
             Thread{
 
                 val db = Room.databaseBuilder(applicationContext,
-                        MyDatabase::class.java,
-                        "mydatabase").build()
+                        ProjectDatabase::class.java,
+                        "projectDatabase").build()
 
-                val userDao  = db.userDao()
 
-                //INSERTING SINGLE USER TO THE DATABASE
-//                val user = User(1,"Mohamed",47838392)
-//                userDao.insertUser(user)
+                val userDao = db.userDao()
 
-                //INSERTING MULTIPLE USERS TO THE DATABASE
-                val user = ArrayList<User>()
-                user.add(User(2,"Jamac",232423))
-                user.add(User(3,"Cali",4353534))
-                user.add(User(4,"Xasan",8534354))
-                user.add(User(5,"Casha",5439845))
+                //INSERT SINGLE  USER TO THE DATABASE
+//                val user = User(1,"Axmed","Ali")
+//                userDao.insert(user)
 
-                userDao.insertUsers(user)
+                //INSERT MULTIPLE USERS TO THE DATABASE
+                val users = ArrayList<User>()
+                users.add(User(2,"jama","mohamed"))
+                users.add(User(3,"cilmi","xasan"))
+                users.add(User(4,"warfa","mohamed"))
+                users.add(User(5,"mohamed","mohamed"))
+
+                userDao.insertUsers(users)
+
 
             }.start()
 
         }
-
-        val read = findViewById<Button>(R.id.read)
-
-        read.setOnClickListener {
-            readUser()
-        }
     }
 
-
-    fun readUser(){
-        Thread{
-
-            val db = Room.databaseBuilder(applicationContext,
-                    MyDatabase::class.java,
-                    "mydatabase").build()
-
-            val userDao  = db.userDao()
-
-            val user = userDao.getUser(5)
-
-            runOnUiThread(Runnable {
-                name.text = user.name
-                phone.text = user.phone.toString()
-            })
-
-        }.start()
-    }
 }
 
