@@ -1,17 +1,14 @@
 package com.tiriig.fistappafternoon
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface UserDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUsers(user: List<User>)
 
     @Query("SELECT * FROM user")
@@ -19,4 +16,10 @@ interface UserDao {
 
     @Query("SELECT * FROM user where id  = :userId")
     fun getUser(userId: Int): User
+
+    @Query("DELETE FROM user where id = :userId")
+    fun deleteUser(userId: Int)
+
+    @Query("UPDATE user set firstName = :firstName where id = :userId")
+    fun updateUser(firstName: String,userId: Int)
 }

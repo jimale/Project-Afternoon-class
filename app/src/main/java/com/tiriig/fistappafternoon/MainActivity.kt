@@ -2,6 +2,7 @@ package com.tiriig.fistappafternoon
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.widget.Button
 import android.widget.EditText
@@ -30,36 +31,25 @@ class MainActivity : AppCompatActivity() {
         name = findViewById(R.id.name)
         phone = findViewById(R.id.phone)
 
-
-
-
         mybutton.setOnClickListener {
 
             Thread{
 
-                val db = Room.databaseBuilder(applicationContext,
-                        ProjectDatabase::class.java,
-                        "projectDatabase").build()
+                val database = ProjectDatabase.invoke(this)
 
+                //Deleting user
+                database.userDao().deleteUser(1)
 
-                val userDao = db.userDao()
+                //Updating user
+                database.userDao().updateUser("Updated Name",2)
 
-                //INSERT SINGLE  USER TO THE DATABASE
-//                val user = User(1,"Axmed","Ali")
-//                userDao.insert(user)
+                val data = database.userDao().getAllUsers()
 
-                //INSERT MULTIPLE USERS TO THE DATABASE
-                val users = ArrayList<User>()
-                users.add(User(2,"jama","mohamed"))
-                users.add(User(3,"cilmi","xasan"))
-                users.add(User(4,"warfa","mohamed"))
-                users.add(User(5,"mohamed","mohamed"))
-
-                userDao.insertUsers(users)
-
+                runOnUiThread {
+                    name.text = data.toString()
+                }
 
             }.start()
-
         }
     }
 
