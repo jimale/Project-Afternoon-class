@@ -9,63 +9,40 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello world"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:drawablePadding="50dp"
-        app:drawableEndCompat="@drawable/ic_person_24" />
-
     <EditText
-        android:hint="Enter your username"
-        android:inputType="textMultiLine"
+        android:hint="Enter your name"
+        android:inputType="text"
         android:layout_marginTop="10dp"
-        android:id="@+id/myEditText"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
 
-    <ImageView
-        android:layout_gravity="center"
-        android:src="@drawable/somlogo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+    <EditText
+        android:hint="Enter your phone number"
+        android:inputType="phone"
+        android:layout_marginTop="10dp"
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <EditText
+        android:hint="Enter your email"
+        android:inputType="text"
+        android:layout_marginTop="10dp"
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
     <Button
         android:layout_marginTop="10dp"
-        android:id="@+id/myButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/save"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="save"
         android:textColor="@color/white" />
-
-
-    <TextView
-        android:id="@+id/name"
-        android:textSize="25sp"
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/phone"
-        android:textSize="25sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
-    <Button
-        android:layout_marginTop="10dp"
-        android:id="@+id/read"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Read user"
-        android:textColor="@color/white" />
-
 
 
 </LinearLayout>

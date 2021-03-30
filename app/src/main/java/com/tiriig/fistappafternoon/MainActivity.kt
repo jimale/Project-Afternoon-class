@@ -14,44 +14,37 @@ import androidx.room.Room
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mybutton: Button
-    private lateinit var myTextView: TextView
-    private lateinit var name: TextView
-    private lateinit var phone: TextView
-    private lateinit var myEditText : EditText
+    private lateinit var name : EditText
+    private lateinit var phone : EditText
+    private lateinit var email : EditText
+
+    private lateinit var saveButton : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mybutton = findViewById(R.id.myButton)
-        myEditText = findViewById(R.id.myEditText)
-
-
         name = findViewById(R.id.name)
         phone = findViewById(R.id.phone)
+        email = findViewById(R.id.email)
+        saveButton = findViewById(R.id.save)
 
-        mybutton.setOnClickListener {
-
-            Thread{
-
-                val database = ProjectDatabase.invoke(this)
-
-                //Deleting user
-                database.userDao().deleteUser(1)
-
-                //Updating user
-                database.userDao().updateUser("Updated Name",2)
-
-                val data = database.userDao().getAllUsers()
-
-                runOnUiThread {
-                    name.text = data.toString()
-                }
-
-            }.start()
+        saveButton.setOnClickListener {
+            saveUser()
         }
     }
 
+  private fun saveUser(){
+
+      Thread{
+          val db = ProjectDatabase.invoke(this)
+
+          db.userDao().insert(User(0,
+                  name.text.toString(),
+                  phone.text.toString(),
+                  email.text.toString()))
+      }.start()
+
+    }
 }
 
