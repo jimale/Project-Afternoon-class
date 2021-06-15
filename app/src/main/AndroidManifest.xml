@@ -10,14 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FistAppAfternoon">
         <activity android:name=".DisplayActivity"
-            android:label="Display"/>
-        <activity android:name=".MainActivity"
-            android:label="Home">
+            android:label="Display">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".MainActivity"
+            android:label="Home">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <meta-data
