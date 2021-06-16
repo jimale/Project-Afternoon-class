@@ -36,14 +36,14 @@ class MainActivity : AppCompatActivity() {
 
   private fun saveUser(){
 
-      Thread{
-          val db = ProjectDatabase.invoke(this)
-
-          db.userDao().insert(User(0,
-                  name.text.toString(),
-                  phone.text.toString(),
-                  email.text.toString()))
-      }.start()
+//      Thread{
+//          val db = ProjectDatabase.invoke(this)
+//
+//          db.userDao().insert(User(0,
+//                  name.text.toString(),
+//                  phone.text.toString(),
+//                  email.text.toString()))
+//      }.start()
 
     }
 }

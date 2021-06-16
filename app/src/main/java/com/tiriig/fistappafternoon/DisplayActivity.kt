@@ -12,6 +12,8 @@ class DisplayActivity : AppCompatActivity() {
 
     private val adapter = DisplayAdapter()
 
+    private val users = ArrayList<User>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display)
@@ -25,10 +27,19 @@ class DisplayActivity : AppCompatActivity() {
         data.add(User(2,"Mohamed ALi Jama","435938","mohamed@gmail.com"))
         data.add(User(3,"Jama ALi Jama","837393","jama@gmail.com"))
 
+        Thread{
+            //INSERT
+            val db = ProjectDatabase.invoke(this)
+            //db.userDao().insert(data)
+
+            //SELECT
+            val usersData = db.userDao().getUsers()
+            users.addAll(usersData)
+        }.start()
 
 
         recyclerView = findViewById(R.id.displayRecyclerView)
-        adapter.submitList(data)
+        adapter.submitList(users)
         recyclerView.adapter = adapter
     }
 

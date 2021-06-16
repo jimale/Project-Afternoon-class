@@ -6,5 +6,8 @@ import androidx.room.*
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(user: User)
+    fun insert(user: List<User>)
+
+    @Query("SELECT * FROM user")
+    fun getUsers(): List<User>
 }
